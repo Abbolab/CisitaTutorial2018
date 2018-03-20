@@ -21,7 +21,15 @@
     </android.support.design.widget.AppBarLayout>
 
     <!-- Includo un layout all'interno del BODY dell'activity -->
-    <include layout="@layout/content_main" />
+    <!--<include layout="@layout/content_main" />-->
+
+    <!-- Dichiaro un FrameLayout per poter mostrare i vari Fragment -->
+    <FrameLayout
+        android:id="@+id/mainContentFragment"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

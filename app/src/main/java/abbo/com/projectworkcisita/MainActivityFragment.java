@@ -11,6 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import cz.msebera.android.httpclient.Header;
+
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -29,21 +36,40 @@ public class MainActivityFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Ottengo il widget TextView definito nel XML layout dalla View principale che ha come ID: textViewTest2
-        // La variabile è definita come "final" poiché usata all'interno del blocco [onClick]
-        final TextView myTextView = (TextView)view.findViewById(R.id.textViewTest2);
+        // ottengo pulsante per il download dati
+        Button btnDonwload = view.findViewById(R.id.buttonDownload);
 
-        // Ottengo il widget Button definito nel XML layout dalla View principale che ha come ID: buttonActionTest
-        Button myButtonAction = (Button)view.findViewById(R.id.buttonActionTest);
-
-        // Implemento un Listener per l'evento OnClick del pulsante
-        myButtonAction.setOnClickListener(new View.OnClickListener() {
+        btnDonwload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Stampo a Console "Logcat" un testo per le verifiche con un TAG a scelta [CISITA]
-                Log.d("CISITA", "Pulsante premuto!");
-                //Renderizzo un testo a scelta nella TextView ottenuta in precedenza
-                myTextView.setText("Pulsante premuto!!!");
+                // avviamo procedura di download dati
+                executeDownloadData();
+            }
+        });
+
+    }
+
+    /***
+     * Avvio procedura di donwload dati interrogando WebService
+     */
+    private void executeDownloadData() {
+
+        Log.d("CISITA", ">>>> executeDownloadData()");
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("https://private-241152-cisitatest.apiary-mock.com/users", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                Log.d("CISITA", "AsyncHTTPClient - onSuccess :-) !!!");
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                Log.d("CISITA", "AsyncHTTPClient - onFailure :-(");
+
             }
         });
 

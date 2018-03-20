@@ -1,37 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Definisco un Relative Layout che dispone gli elementi disposti tutti a cordinate schermo 0,0 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_main_fragment"
-    android:orientation="vertical">
+    android:background="@drawable/background_main_fragment"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <!-- BODY LAYOUT -->
-    <!-- Prima TextView di test con ID: textViewTest1 -->
-    <TextView
-        android:id="@+id/textViewTest1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragment_main_textview"
-        android:background="@android:color/holo_green_light"
-        android:layout_marginBottom="20dp"/>
-
-    <!-- Seconda TextView di test con ID: textViewTest1 disposta sotto la prima -->
-    <TextView
-        android:id="@+id/textViewTest2"
-        android:layout_below="@+id/textViewTest1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fragment_main_textview"
-        android:background="@android:color/holo_blue_dark"/>
-
-    <!-- Definisco un Button di test con ID: buttonActionTest disposta sotto la TexView "textViewTest2" -->
     <Button
-        android:id="@+id/buttonActionTest"
-        android:layout_below="@+id/textViewTest2"
-        android:text="Azione!!!"
-        android:textAllCaps="false"
+        android:id="@+id/buttonDownload"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Download"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textViewCountData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"/>
+
+    <TextView
+        android:id="@+id/textViewLastUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="---"/>
+
+
+
+</LinearLayout>
